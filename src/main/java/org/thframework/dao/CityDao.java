@@ -6,11 +6,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.thframework.model.City;
-
 import java.util.List;
 
 /**
- * Created by huangteng on 2016/11/15.
+ * Created on 2016/11/15.
  */
 @Repository
 public class CityDao {

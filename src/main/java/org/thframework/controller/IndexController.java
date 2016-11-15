@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thframework.model.City;
 import org.thframework.service.IndexService;
-
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by huangteng on 2016/11/15.
+ * Created on 2016/11/15.
  *
  */
 @Controller
