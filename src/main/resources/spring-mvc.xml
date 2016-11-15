@@ -13,10 +13,10 @@
     <context:property-placeholder location="classpath:config.properties"/>
 
     <!-- 自动扫描dao和service包(自动注入) -->
-    <context:component-scan base-package="com.jesus.sshframework.dao,com.jesus.sshframework.service"/>
+    <context:component-scan base-package="org.thframework.dao,org.thframework.service"/>
 
     <!-- 注解扫描包 -->
-    <context:component-scan base-package="com.jesus.sshframework.controller"/>
+    <context:component-scan base-package="org.thframework.controller"/>
 
     <!-- 开启mvc注解 -->
     <mvc:annotation-driven/>
