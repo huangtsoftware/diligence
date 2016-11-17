@@ -37,4 +37,8 @@ public class IndexController {
         indexService.save(city);
         return "sucess..";
     }
+
+
+
+
 }
