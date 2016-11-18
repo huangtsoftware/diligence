@@ -2,18 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <import resource="spring-hibernate.xml"/>
-
-    <!-- 引入属性文件 -->
-    <context:property-placeholder location="classpath:config.properties"/>
 
     <!-- 自动扫描dao和service包(自动注入) -->
     <context:component-scan base-package="org.thframework.dao,org.thframework.service"/>
@@ -21,16 +16,22 @@
     <!-- 注解扫描包 -->
     <context:component-scan base-package="org.thframework.controller"/>
 
-    <!--  -->
-    <task:annotation-driven/>
-    <context:component-scan base-package="org.thframework.task"/>
-
     <!-- 开启mvc注解 -->
-    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven/>-->
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
+
+    <mvc:interceptors>
+        <!--<bean id="requestInterceptor" class="org.thframework.interceptor.RequestInterceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="org.thframework.interceptor.RequestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
