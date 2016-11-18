@@ -26,7 +26,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springfr
         <property name="password" value="${jdbc_password}"/>
 
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="0"/>
+        <property name="initialSize" value="5"/>
         <!-- 连接池最大使用连接数量 -->
         <property name="maxActive" value="20"/>
         <!-- 连接池最大空闲 -->
@@ -35,29 +35,31 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springfr
         <property name="minIdle" value="0"/>
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="60000"/>
-
-        <!-- <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
-
+        <!--  -->
+        <property name="poolPreparedStatements" value="true"/>
+        <!--  -->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="33"/>
+        <!--  -->
         <property name="validationQuery" value="${validationQuery}"/>
         <property name="testOnBorrow" value="false"/>
         <property name="testOnReturn" value="false"/>
         <property name="testWhileIdle" value="true"/>
-
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
         <property name="timeBetweenEvictionRunsMillis" value="60000"/>
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
         <property name="minEvictableIdleTimeMillis" value="25200000"/>
-
         <!-- 打开removeAbandoned功能 -->
         <property name="removeAbandoned" value="true"/>
         <!-- 1800秒，也就是30分钟 -->
         <property name="removeAbandonedTimeout" value="1800"/>
         <!-- 关闭abanded连接时输出错误日志 -->
         <property name="logAbandoned" value="true"/>
-
         <!-- 监控数据库 -->
         <!-- <property name="filters" value="stat" /> -->
-        <property name="filters" value="mergeStat"/>
+        <property name="filters" value="stat,wall"/>
+        <!-- 配置自己的日志记录器 -->
+        <!--<property name="statLogger" ref="myStatLogger" />-->
+        <!--<property name="timeBetweenLogStatsMillis" value="5000" />-->
     </bean>
 
     <!-- 配置hibernate session工厂 -->
@@ -114,6 +116,10 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springfr
         <aop:pointcut id="transactionPointcut" expression="execution(* org.thframework.service..*Impl.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
+
+
+    <!-- druid 记录日志的类 -->
+    <bean id="myStatLogger" class="org.thframework.log.MyStatLogger"/>
 
 
 </beans>

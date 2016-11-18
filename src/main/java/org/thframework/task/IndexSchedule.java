@@ -13,9 +13,9 @@ import java.util.Date;
 @Component
 public class IndexSchedule {
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 60000)
     public void index() {
-        System.out.println("现在时间是：".concat(DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(new Date())));
+        System.out.println("定时任务，现在时间是：".concat(DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(new Date())));
     }
 
 
