@@ -56,7 +56,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springfr
         <property name="logAbandoned" value="true"/>
         <!-- 监控数据库 -->
         <!-- <property name="filters" value="stat" /> -->
-        <property name="filters" value="stat,wall"/>
+        <property name="filters" value="stat"/>
         <!-- 配置自己的日志记录器 -->
         <!--<property name="statLogger" ref="myStatLogger" />-->
         <!--<property name="timeBetweenLogStatsMillis" value="5000" />-->

@@ -4,16 +4,25 @@ import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.thframework.model.RequestLog;
+import org.thframework.service.LogService;
+
+import java.util.Date;
 
 /**
  * Created on 2016/11/19.
  */
 public class LogAspect {
 
+
+
     Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     public void before(JoinPoint joinPoint) {
-        logger.info(joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName() + "; params:{}", JSON.toJSONString(joinPoint.getArgs()));
+        String methodName = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
+        String params = JSON.toJSONString(joinPoint.getArgs());
+        logger.info(methodName + "; params:{}", params);
 
     }
 
