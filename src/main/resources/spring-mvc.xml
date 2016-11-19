@@ -2,12 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <!-- 自动扫描dao和service包(自动注入) -->
@@ -25,7 +26,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-
+    <!-- 拦截所有的controller  -->
     <mvc:interceptors>
         <!--<bean id="requestInterceptor" class="org.thframework.interceptor.RequestInterceptor"/>-->
         <mvc:interceptor>
@@ -33,5 +34,21 @@
             <bean class="org.thframework.interceptor.RequestInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!--    begin       aop 记录service方法的入参、出参            -->
+    <!-- 通知 -->
+    <bean id="advices" class="org.thframework.aspect.LogAspect"></bean>
+    <!-- aop配置 -->
+    <aop:config proxy-target-class="true">
+        <!--切面 -->
+        <aop:aspect ref="advices">
+            <!-- 切点 -->
+            <aop:pointcut expression="execution(* org.thframework.service..*Impl.*(..))" id="pointcut1"/>
+            <!--连接通知方法与切点 -->
+            <aop:before method="before" pointcut-ref="pointcut1"/>
+            <aop:after-returning method="after" arg-names="joinPoint,retValue" returning="retValue" pointcut-ref="pointcut1"/>
+        </aop:aspect>
+    </aop:config>
+    <!--   end        aop 记录service方法的入参、出参            -->
 
 </beans>

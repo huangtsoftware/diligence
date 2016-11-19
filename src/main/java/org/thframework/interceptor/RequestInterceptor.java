@@ -21,6 +21,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("preHandle:{}", JSON.toJSONString(handler));
+
         return true;
     }
 
