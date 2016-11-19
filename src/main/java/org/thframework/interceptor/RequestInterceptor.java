@@ -1,6 +1,5 @@
 package org.thframework.interceptor;
 
-import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.thframework.model.RequestLog;
 import org.thframework.service.LogService;
-
+import org.thframework.utils.CommonUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -29,44 +28,32 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("preHandle:{}", JSON.toJSONString(handler));
+        logger.info("preHandle:{}", CommonUtils.toJSONString(handler));
         RequestLog requestLog = new RequestLog();
         String method = request.getMethod();
         String uri = request.getRequestURI();
         Map map = request.getParameterMap();
         requestLog.setUrl(uri);
-        requestLog.setParams(JSON.toJSONString(map));
+        requestLog.setParams(CommonUtils.toJSONString(map));
         requestLog.setType(method);
         requestLog.setAddTime(new Date());
-        requestLog.setRemoteIP(getIpAddr(request));
+        requestLog.setRemoteIP(CommonUtils.getIpAddr(request));
         logService.save(requestLog);
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        logger.info("postHandle:{}", JSON.toJSONString(handler));
+        logger.info("postHandle:{}", CommonUtils.toJSONString(handler));
 
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        logger.info("afterCompletion:{}", JSON.toJSONString(handler));
+        logger.info("afterCompletion:{}", CommonUtils.toJSONString(handler));
 
     }
 
 
-    public String getIpAddr(HttpServletRequest request) {
-        String ip = request.getHeader("x-forwarded-for");
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("WL-Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-        }
-        return ip;
-    }
+
 }
