@@ -12,9 +12,12 @@ import org.thframework.utils.CommonUtils;
 public class LogAspect {
 
 
-
     Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
+    /**
+     * 进入方法前调用
+     * @param joinPoint
+     */
     public void before(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
         String params = CommonUtils.toJSONString(joinPoint.getArgs());
@@ -22,8 +25,14 @@ public class LogAspect {
 
     }
 
+    /**
+     * 方法返回后调用
+     * @param joinPoint
+     * @param retValue
+     */
     public void after(JoinPoint joinPoint, Object retValue) {
-        logger.info(joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName() + "; return:{}", JSON.toJSONString(retValue));
+        String methodName = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
+        logger.info(methodName + "; return:{}", JSON.toJSONString(retValue));
 
     }
 }

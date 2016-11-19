@@ -9,12 +9,20 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CommonUtils {
 
-
+    /**
+     * 转换成JSON字符串
+     * @param object
+     * @return
+     */
     public static String toJSONString(Object object) {
         return JSON.toJSONString(object);
     }
 
-
+    /**
+     * 获取客户端IP地址
+     * @param request
+     * @return
+     */
     public static String getIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
@@ -28,5 +36,9 @@ public class CommonUtils {
         }
         return ip;
     }
+
+
+
+
 
 }

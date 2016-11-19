@@ -26,9 +26,16 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     Logger logger = LoggerFactory.getLogger(RequestInterceptor.class);
 
+    /**
+     * 进入方法前调用
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("preHandle:{}", CommonUtils.toJSONString(handler));
         RequestLog requestLog = new RequestLog();
         String method = request.getMethod();
         String uri = request.getRequestURI();
@@ -42,15 +49,29 @@ public class RequestInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    /**
+     * 方法执行后调用
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        logger.info("postHandle:{}", CommonUtils.toJSONString(handler));
 
     }
 
+    /**
+     * 执行完视图后调用
+     * @param request
+     * @param response
+     * @param handler
+     * @param ex
+     * @throws Exception
+     */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        logger.info("afterCompletion:{}", CommonUtils.toJSONString(handler));
 
     }
 

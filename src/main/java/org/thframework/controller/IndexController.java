@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thframework.model.City;
 import org.thframework.service.IndexService;
+import org.thframework.utils.CommonUtils;
+
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class IndexController {
     public String index() {
         List<City> cities = indexService.findAll();
         log.info(JSON.toJSONString(cities));
-        return JSON.toJSONString(cities);
+        return CommonUtils.toJSONString(cities);
     }
 
     @RequestMapping("/save")
@@ -41,17 +43,5 @@ public class IndexController {
         indexService.save(city);
         return "sucess..";
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
