@@ -27,9 +27,15 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
-    @RequestMapping("/index")
-    @ResponseBody
+    @RequestMapping("/home")
     public String index() {
+        System.out.println("home......");
+        return "home";
+    }
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public String list() {
         List<City> cities = indexService.findAll();
         log.info(JSON.toJSONString(cities));
         return CommonUtils.toJSONString(cities);

@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="fight:war exploded">
+  <artifact type="exploded-war" name="diligence:war exploded">
     <output-path>$PROJECT_DIR$/target/kk</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
