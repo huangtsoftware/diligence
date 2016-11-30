@@ -1,21 +1,19 @@
 import org.junit.Test;
-
-import java.sql.Timestamp;
-import java.util.Date;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+import org.thframework.service.IndexService;
+import javax.annotation.Resource;
 
 /**
  * Created on 2016/11/15.
  */
+@Transactional("transactionManager")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring-hibernate-test.xml", "classpath:spring-task-test.xml" })
 public class BaseTeset {
 
-
-    @Test
-    public void test() {
-
-        System.err.println(new Timestamp(new Date().getTime()));
-
-
-    }
-
+   
 
 }
