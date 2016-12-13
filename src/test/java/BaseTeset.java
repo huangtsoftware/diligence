@@ -14,6 +14,12 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = { "classpath:spring-hibernate-test.xml", "classpath:spring-task-test.xml" })
 public class BaseTeset {
 
-   
+    @Resource
+    private IndexService indexService;
+    
+    @Test
+    public void test() {
+        System.out.println(indexService.findAll());
+    }
 
 }

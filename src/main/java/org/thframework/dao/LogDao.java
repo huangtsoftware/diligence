@@ -14,9 +14,6 @@ public class LogDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-
-
-
     public void save(RequestLog requestLog) {
         sessionFactory.getCurrentSession().save(requestLog);
     }
