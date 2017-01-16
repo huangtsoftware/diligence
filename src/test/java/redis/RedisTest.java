@@ -1,17 +1,14 @@
 package redis;
 
 import base.BaseTest;
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.client.RestTemplate;
-import org.thframework.model.BaseResource;
+import org.thframework.model.City;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Date;
 
 /**
  * Created on 2017/1/13.
@@ -24,9 +21,18 @@ public class RedisTest extends BaseTest {
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private MongoTemplate mongoTemplate;
+
     @Test
     public void testRedisTemplate() {
         redisTemplate.opsForHash().put("test", "name", "hahahahahh");
+        City city = new City();
+        city.setId(1);
+        city.setAddTime(new Date());
+//        mongoTemplate.insert(city);
+        mongoTemplate.findById(city, City.class);
+//        System.out.println(mongoTemplate.getDb());
     }
 
 
