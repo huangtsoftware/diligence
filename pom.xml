@@ -152,6 +152,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- mongodb -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>1.9.6.RELEASE</version>
+        </dependency>
+
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>

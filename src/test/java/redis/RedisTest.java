@@ -26,19 +26,10 @@ public class RedisTest extends BaseTest {
 
     @Test
     public void testRedisTemplate() {
-//        System.out.println(redisTemplate);
-        query(1, 2);
+        redisTemplate.opsForHash().put("test", "name", "hahahahahh");
     }
 
 
-    List<BaseResource> query(int page, int pageSize) {
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("start", 1);
-        params.put("limit", 3);
-        String ecode = Base64Utils.encodeToString(JSON.toJSONString(params).getBytes());
-        String kk = restTemplate.getForObject("http://127.0.0.1:12331/acs/privative/poi/resource/list", String.class, ecode);
-        String result = Base64Utils.decodeFromString(kk).toString();
-        return null;
-    }
+
 
 }
