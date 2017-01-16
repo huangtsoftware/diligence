@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional("transactionManager")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-hibernate-test.xml", "classpath:spring-task-test.xml",
+@ContextConfiguration(locations = {"classpath:spring-jpa-test.xml", "classpath:spring-task-test.xml",
         "classpath:spring-redis-test.xml", "classpath:spring-rest.xml" ,"classpath:spring-mongodb-test.xml"})
 public class BaseTest {
 

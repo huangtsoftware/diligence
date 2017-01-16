@@ -1,7 +1,10 @@
 package base;
 
 import org.junit.Test;
-import org.thframework.service.IBaseResourceService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.thframework.model.District;
+import org.thframework.service.IDistrictService;
 
 import javax.annotation.Resource;
 
@@ -9,11 +12,14 @@ import javax.annotation.Resource;
  * Created on 2017/1/13.
  */
 public class ServiceTest extends BaseTest {
+
     @Resource
-    private IBaseResourceService indexService;
+    private IDistrictService districtServiceImpl;
 
     @Test
     public void testIndexService() {
-//        System.out.println(indexService.findAll());
+        District district = new District();
+        Pageable pageable = new PageRequest(0, 3);
+        System.out.println(districtServiceImpl.queryByCondition(district, pageable));
     }
 }

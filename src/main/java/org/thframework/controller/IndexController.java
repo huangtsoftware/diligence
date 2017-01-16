@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thframework.model.City;
-import org.thframework.service.IBaseResourceService;
+import org.thframework.service.IDistrictService;
 
 import java.util.Date;
 
@@ -22,7 +22,7 @@ public class IndexController {
     Logger log = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
-    private IBaseResourceService indexService;
+    private IDistrictService indexService;
 
     @RequestMapping("/home")
     public String index() {
