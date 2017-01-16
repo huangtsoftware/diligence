@@ -44,7 +44,9 @@ public class DistrictServiceImpl implements IDistrictService {
             @Override
             public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder builder) {
                 List<Predicate> predicates = new ArrayList<Predicate>();
-
+                if (district.getId() != null && district.getId() != 0) {
+                    predicates.add(builder.equal(root.get("id"),  district.getId()));
+                }
                 return builder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };

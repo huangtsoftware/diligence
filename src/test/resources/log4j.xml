@@ -25,7 +25,7 @@
         如果在railyFile中定义<param name="Threshold" value="info"></param>，那么将会把info以上级别的信息输出
      -->
     <root>
-        <priority value="info"/>
+        <priority value="error"/>
         <appender-ref ref="console"/>
         <appender-ref ref="dailyRollingFile"/>
     </root>
