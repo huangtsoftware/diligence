@@ -11,7 +11,12 @@ import org.thframework.model.District;
 import org.thframework.service.IDistrictService;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Created on 2017/1/13.
@@ -37,7 +42,8 @@ public class ServiceTest extends BaseTest {
 //        district.setId(1);
 //        Pageable pageable = new PageRequest(0, 1);
 //        System.out.println(JSON.toJSONString(districtServiceImpl.queryByCondition(district, pageable)));
-        for (int i = 0; i < 110; i++) {
+
+        for (int i = 0; i < 1100; i++) {
             District d = new District();
             d.setId(i);
             d.setName("k + " + i);
@@ -50,12 +56,25 @@ public class ServiceTest extends BaseTest {
             d.setSpell("sdf");
             d.setAddUid(1);
             d.setUpdateUid(2);
-//            d = districtServiceImpl.save(d);
+            d = districtServiceImpl.save(d);
             redisTemplate.opsForHash().put("ha", d.getId().toString(), JSON.toJSONString(d));
             mongoTemplate.save(d);
             System.out.println(JSON.toJSON(d));
         }
 
+    }
+
+    @Test
+    public void test() throws IOException {
+        FileInputStream in = new FileInputStream(new File("D:\\opt\\tuniu\\logs\\tomcat\\app\\tomcat_ats_acs\\acs.log"));
+        Scanner scanner = new Scanner(in);
+        while (scanner.hasNextLine()) {
+            District d = new District();
+            d.setName(scanner.nextLine());
+            districtServiceImpl.save(d);
+        }
+        in.close();
+        scanner.close();
     }
 
 

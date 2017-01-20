@@ -7,6 +7,6 @@ public enum LogTypeEnum {
 
     LOG_HTTP(),
     
-    LOG_METHOD();
+    LOG_METHOD()
 
 }
