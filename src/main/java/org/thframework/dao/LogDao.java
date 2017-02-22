@@ -11,4 +11,5 @@ import org.thframework.model.RequestLog;
 public interface LogDao extends PagingAndSortingRepository<RequestLog, Integer> {
 
 
+
 }

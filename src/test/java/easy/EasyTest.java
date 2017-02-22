@@ -12,7 +12,7 @@ public class EasyTest {
 
     /**
      * 新特性
-     * lambdas表达式和Function接口
+     * Lambdas表达式和Function接口
      * 接口的默认和静态方法
      *
      */
