@@ -4,22 +4,17 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
-    <mvc:annotation-driven />
-    <!-- 自动扫描dao -->
-    <!--<context:component-scan base-package="org.thframework.dao"/>-->
     <!--  -->
     <context:component-scan base-package="org.thframework.service"/>
     <!-- 注解扫描包 controller -->
     <context:component-scan base-package="org.thframework.controller"/>
-
-    <mvc:annotation-driven/>
 
     <!-- 拦截所有的controller  -->
     <mvc:interceptors>
@@ -46,11 +41,6 @@
     </aop:config>
     <!--   end        aop 记录service方法的入参、出参            -->
 
-    <!-- 静态资源 web.xml 已经配置，此处不需要-->
-    <!--<mvc:resources mapping="/css/**" location="/css/**"/>-->
-    <!--<mvc:resources mapping="/js/**" location="/js/**"/>-->
-    <!--<mvc:default-servlet-handler />-->
-
     <!-- 视图解析器  -->
     <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
@@ -69,5 +59,6 @@
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
         <constructor-arg ref="httpClientFactory"/>
     </bean>
+
 
 </beans>

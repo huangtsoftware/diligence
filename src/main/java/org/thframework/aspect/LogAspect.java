@@ -20,8 +20,7 @@ public class LogAspect {
      */
     public void before(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
-        String params = CommonUtils.toJSONString(joinPoint.getArgs());
-        logger.info(methodName + "; params:{}", params);
+        String params = JSON.toJSONString(joinPoint.getArgs());
 
     }
 
@@ -32,7 +31,6 @@ public class LogAspect {
      */
     public void after(JoinPoint joinPoint, Object retValue) {
         String methodName = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
-        logger.info(methodName + "; return:{}", JSON.toJSONString(retValue));
 
     }
 }

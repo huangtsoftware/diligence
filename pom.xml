@@ -19,14 +19,6 @@
 
     <dependencies>
         <!--  -->
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-        </dependency>
-
-        <!--  -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -38,7 +30,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-
         <!-- servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -46,21 +37,18 @@
             <version>3.0-alpha-1</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
         <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.2</version>
         </dependency>
-
         <!-- jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -73,41 +61,30 @@
             <version>2.2.1-b03</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- 文件上传 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.2.2</version>
         </dependency>
-
         <!-- fastJson json -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.15</version>
         </dependency>
-
         <!-- mysql数据库驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
-
         <!-- druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.26</version>
         </dependency>
-
-        <!-- hibernate4 -->
-        <!--<dependency>-->
-        <!--<groupId>org.hibernate</groupId>-->
-        <!--<artifactId>hibernate-core</artifactId>-->
-        <!--<version>4.2.5.Final</version>-->
-
         <!--</dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -130,7 +107,6 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.1.Final</version>
         </dependency>
-
         <!-- aspectjweaver.jar这是Spring AOP所要用到的包 -->
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -149,14 +125,6 @@
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
-
-        <!-- spring mvc -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
         <!-- mongodb -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -173,6 +141,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
@@ -230,6 +203,17 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.18.2-GA</version>
+        </dependency>
+        <!-- orika -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+            <artifactId>concurrentlinkedhashmap-lru</artifactId>
+            <version>1.4.2</version>
         </dependency>
     </dependencies>
 

@@ -1,5 +1,6 @@
 package org.thframework.interceptor;
 
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class RequestInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         Map map = request.getParameterMap();
         logInfo.setUrl(uri);
-        logInfo.setParams(CommonUtils.toJSONString(map));
+        logInfo.setParams(JSON.toJSONString(map));
         logInfo.setRemoteIP(CommonUtils.getIpAddr(request));
         logInfoService.save(logInfo);
         return true;

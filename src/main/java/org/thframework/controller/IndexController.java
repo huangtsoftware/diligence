@@ -1,13 +1,15 @@
 package org.thframework.controller;
 
-import com.alibaba.fastjson.JSON;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thframework.domain.weather.WeatherInfoData;
 import org.thframework.service.CityInfoService;
+import org.thframework.service.WeatherInfoService;
 
 /**
  * Created on 2016/11/15.
@@ -22,6 +24,9 @@ public class IndexController {
     @Autowired
     private CityInfoService cityInfoService;
 
+    @Autowired
+    private WeatherInfoService weatherInfoService;
+
     @RequestMapping("/home")
     public String index() {
         System.out.println("home......");
@@ -35,6 +40,11 @@ public class IndexController {
         return "sucess..";
     }
 
+    @RequestMapping("/weather")
+    @ResponseBody
+    public WeatherInfoData weather(String city) {
+        return weatherInfoService.getWeatherInfoData(city);
+    }
 
 
 }
