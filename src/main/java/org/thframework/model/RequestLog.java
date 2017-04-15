@@ -1,13 +1,14 @@
 package org.thframework.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created on 2016/11/18.
  */
 @Entity(name = "request_log")
-public class RequestLog {
+public class RequestLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

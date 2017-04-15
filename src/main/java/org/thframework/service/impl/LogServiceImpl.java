@@ -11,6 +11,7 @@ import org.thframework.service.LogService;
  */
 @Service
 public class LogServiceImpl implements LogService {
+
     @Autowired
     private LogDao logDao;
 

@@ -11,9 +11,11 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!-- 自动扫描dao和service包(自动注入) -->
-    <context:component-scan base-package="org.thframework.dao,org.thframework.service"/>
-
+    <mvc:annotation-driven />
+    <!-- 自动扫描dao -->
+    <!--<context:component-scan base-package="org.thframework.dao"/>-->
+    <!--  -->
+    <context:component-scan base-package="org.thframework.service"/>
     <!-- 注解扫描包 controller -->
     <context:component-scan base-package="org.thframework.controller"/>
 

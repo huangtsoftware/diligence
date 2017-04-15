@@ -4,9 +4,10 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="diligence" />
+          <element id="module-output" name="kk" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.google.guava:guava:19.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.5" />
           <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
@@ -55,6 +56,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.10.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.9" />
         </element>
@@ -62,7 +64,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/kk/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="diligence/web/Web" />
+      <element id="javaee-facet-resources" facet="kk/web/Web" />
     </root>
   </artifact>
 </component>

@@ -1,6 +1,7 @@
 package base;
 
 import com.alibaba.fastjson.JSON;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -37,12 +38,8 @@ public class ServiceTest extends BaseTest {
     private MongoTemplate mongoTemplate;
 
     @Test
+    @Ignore
     public void testIndexService() {
-//        District district = new District();
-//        district.setId(1);
-//        Pageable pageable = new PageRequest(0, 1);
-//        System.out.println(JSON.toJSONString(districtServiceImpl.queryByCondition(district, pageable)));
-
         for (int i = 0; i < 1100; i++) {
             District d = new District();
             d.setId(i);
@@ -65,6 +62,7 @@ public class ServiceTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void test() throws IOException {
         FileInputStream in = new FileInputStream(new File("D:\\opt\\tuniu\\logs\\tomcat\\app\\tomcat_ats_acs\\acs.log"));
         Scanner scanner = new Scanner(in);
