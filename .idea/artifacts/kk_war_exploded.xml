@@ -58,8 +58,11 @@
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.18.2-GA" />
           <element id="library" level="project" name="Maven: ma.glasnost.orika:orika-core:1.4.6" />
           <element id="library" level="project" name="Maven: com.thoughtworks.paranamer:paranamer:2.7" />
+          <element id="library" level="project" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.2_jdk5" />
           <element id="library" level="project" name="Maven: com.carrotsearch:java-sizeof:0.0.4" />
-          <element id="library" level="project" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

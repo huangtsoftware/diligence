@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thframework.domain.weather.WeatherInfoData;
+import org.thframework.model.SystemConfig;
 import org.thframework.service.CityInfoService;
 import org.thframework.service.WeatherInfoService;
 
@@ -42,7 +43,8 @@ public class IndexController {
 
     @RequestMapping("/weather")
     @ResponseBody
-    public WeatherInfoData weather(String city) {
+    public WeatherInfoData weather(SystemConfig config) {
+        String city = config.getValue();
         return weatherInfoService.getWeatherInfoData(city);
     }
 
