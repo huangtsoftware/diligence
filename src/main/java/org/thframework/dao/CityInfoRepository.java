@@ -11,4 +11,6 @@ import org.thframework.model.CityInfo;
 @Repository
 public interface CityInfoRepository extends PagingAndSortingRepository<CityInfo, Integer>, JpaSpecificationExecutor<CityInfo> {
 
+    CityInfo findByCode(String code);
+
 }

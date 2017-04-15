@@ -22,13 +22,13 @@
     <mvc:annotation-driven/>
 
     <!-- 拦截所有的controller  -->
-    <!--<mvc:interceptors>-->
-        <!--&lt;!&ndash;<bean id="requestInterceptor" class="org.thframework.interceptor.RequestInterceptor"/>&ndash;&gt;-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<bean class="org.thframework.interceptor.RequestInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <!--<bean id="requestInterceptor" class="org.thframework.interceptor.RequestInterceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="org.thframework.interceptor.RequestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--    begin       aop 记录service方法的入参、出参            -->
     <!-- 通知 -->
@@ -56,6 +56,18 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 配置RestTemplate -->
+    <!--Http client Factory-->
+    <bean id="httpClientFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+        <property name="connectTimeout" value="10000"/>
+        <property name="readTimeout" value="20000"/>
+    </bean>
+
+    <!--RestTemplate-->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory"/>
     </bean>
 
 </beans>

@@ -1,5 +1,7 @@
 package org.thframework.model;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,8 +9,9 @@ import java.util.Date;
 /**
  * Created on 2016/11/18.
  */
-@Entity(name = "request_log")
-public class RequestLog implements Serializable {
+@Entity
+@Table(name = "t_loginfo")
+public class LogInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +20,6 @@ public class RequestLog implements Serializable {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "type")
-    private String type;
-
     @Column(name = "params")
     private String params;
 
@@ -27,6 +27,8 @@ public class RequestLog implements Serializable {
     private String remoteIP;
 
     @Column(name = "add_time")
+    @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
     private Date addTime;
 
     public Integer getId() {
@@ -35,6 +37,14 @@ public class RequestLog implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getParams() {
@@ -59,21 +69,5 @@ public class RequestLog implements Serializable {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 }

@@ -2,7 +2,8 @@
   * Copyright 2017 bejson.com 
   */
 package org.thframework.model;
-import org.codehaus.jackson.annotate.JsonProperty;
+
+import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -16,46 +17,47 @@ public class CityInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JSONField(serialize = false, deserialize = false)
     private Integer id;
 
     @Column(name = "code")
-    @JsonProperty("id")
+    @JSONField(name="id")
     private String code;
 
     @Column(name = "city_en")
-    @JsonProperty("cityEn")
+    @JSONField(name="cityEn")
     private String cityen;
 
     @Column(name = "city_zh")
-    @JsonProperty("cityZh")
+    @JSONField(name="cityZh")
     private String cityzh;
 
     @Column(name = "country_code")
-    @JsonProperty("countryCode")
+    @JSONField(name="countryCode")
     private String countrycode;
 
     @Column(name = "country_en")
-    @JsonProperty("countryEn")
+    @JSONField(name="countryEn")
     private String countryen;
 
     @Column(name = "country_zh")
-    @JsonProperty("countryZh")
+    @JSONField(name="countryZh")
     private String countryzh;
 
     @Column(name = "province_en")
-    @JsonProperty("provinceEn")
+    @JSONField(name="provinceEn")
     private String provinceen;
 
     @Column(name = "province_zh")
-    @JsonProperty("provinceZh")
+    @JSONField(name="provinceZh")
     private String provincezh;
 
     @Column(name = "leader_en")
-    @JsonProperty("leaderEn")
+    @JSONField(name="leaderEn")
     private String leaderen;
 
     @Column(name = "leader_zh")
-    @JsonProperty("leaderZh")
+    @JSONField(name="leaderZh")
     private String leaderzh;
 
     @Column(name = "lat")

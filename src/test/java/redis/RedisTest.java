@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.client.RestTemplate;
-import org.thframework.service.IDistrictService;
 
 import javax.annotation.Resource;
 
@@ -23,8 +22,6 @@ public class RedisTest extends BaseTest {
     @Resource
     private MongoTemplate mongoTemplate;
 
-    @Resource
-    private IDistrictService districtServiceImpl;
 
     @Test
     public void testRedisTemplate() {

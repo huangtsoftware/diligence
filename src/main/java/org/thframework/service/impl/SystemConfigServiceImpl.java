@@ -5,9 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.thframework.dao.DistrictRepository;
-import org.thframework.model.District;
-import org.thframework.service.IDistrictService;
+import org.thframework.dao.SystemConfigRepository;
+import org.thframework.model.SystemConfig;
+import org.thframework.service.SystemConfigService;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -20,32 +20,35 @@ import java.util.List;
  * Created on 2016/11/15.
  */
 @Service
-public class DistrictServiceImpl implements IDistrictService {
-
+public class SystemConfigServiceImpl implements SystemConfigService {
 
     @Autowired
-    private DistrictRepository districtRepository;
-
+    private SystemConfigRepository systemConfigRepository;
 
     @Override
-    public List<District> queryByCondition(District district, Pageable pageable) {
-        Page<District> page = districtRepository.findAll(create(district), pageable);
+    public SystemConfig findByKey(String key) {
+        return systemConfigRepository.findByKey(key);
+    }
+
+    @Override
+    public List<SystemConfig> queryByCondition(SystemConfig systemConfig, Pageable pageable) {
+        Page<SystemConfig> page = systemConfigRepository.findAll(create(systemConfig), pageable);
         return page.getContent();
     }
 
     @Override
-    public District save(District district) {
-        return districtRepository.save(district);
+    public SystemConfig save(SystemConfig systemConfig) {
+        return systemConfigRepository.save(systemConfig);
     }
 
-    private Specification create(District district) {
+    private Specification create(SystemConfig systemConfig) {
 
         return new Specification() {
             @Override
             public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder builder) {
                 List<Predicate> predicates = new ArrayList<Predicate>();
-                if (district.getId() != null && district.getId() != 0) {
-                    predicates.add(builder.equal(root.get("id"),  district.getId()));
+                if (systemConfig.getId() != null && systemConfig.getId() != 0) {
+                    predicates.add(builder.equal(root.get("id"),  systemConfig.getId()));
                 }
                 return builder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
