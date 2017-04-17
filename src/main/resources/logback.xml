@@ -18,7 +18,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.apache" level="INFO" additivity="false">
+    <logger name="org.apache" level="DEBUG" additivity="false">
         <appender-ref ref="Console"/>
     </logger>
     <logger name="org.springframework" level="info"/>

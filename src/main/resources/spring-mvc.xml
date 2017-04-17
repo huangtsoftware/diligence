@@ -15,7 +15,8 @@
     <context:component-scan base-package="org.thframework.service"/>
     <!-- 注解扫描包 controller -->
     <context:component-scan base-package="org.thframework.controller"/>
-
+    <!-- org.thframework.utils.BeanContext这个工具类 -->
+    <context:component-scan base-package="org.thframework.utils"/>
     <!-- 拦截所有的controller  -->
     <mvc:interceptors>
         <!--<bean id="requestInterceptor" class="org.thframework.interceptor.RequestInterceptor"/>-->

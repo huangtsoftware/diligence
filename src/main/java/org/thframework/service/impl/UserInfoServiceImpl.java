@@ -15,7 +15,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     private UserInfoRepository userInfoRepository;
     @Override
-    public UserInfo findByUsername(UserInfo userInfo) {
-        return userInfoRepository.findByUsername(userInfo);
+    public UserInfo findByUsername(String username) {
+        return userInfoRepository.findByUsername(username);
+    }
+
+    @Override
+    public void save(UserInfo userInfo) {
+        userInfoRepository.save(userInfo);
     }
 }

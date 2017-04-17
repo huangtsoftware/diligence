@@ -15,13 +15,13 @@
     <bean id="shiroFilter"
           class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="successUrl" value="/systemChoose.do"/>
-        <property name="unauthorizedUrl" value="/login"/>
+        <property name="successUrl" value="/login/main"/>
+        <property name="unauthorizedUrl" value="index"/>
+        <property name="loginUrl" value="toLogin"/>
         <property name="filterChainDefinitions">
             <value>
-                /= anon
-                /admin/** = anon
-                /unit/** = anon
+                /login = anon
+                /** = authc
             </value>
         </property>
     </bean>
@@ -38,7 +38,9 @@
         <property name="exceptionMappings">
             <props>
                 <prop key="org.apache.shiro.authz.UnauthorizedException">/login</prop>
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">/login</prop>
             </props>
+
         </property>
     </bean>
 </beans>

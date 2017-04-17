@@ -39,6 +39,13 @@ public class UserInfo {
     @LastModifiedDate
     private Date updateTime;
 
+    public UserInfo() {}
+
+    public UserInfo(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

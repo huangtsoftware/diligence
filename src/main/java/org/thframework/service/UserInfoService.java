@@ -7,5 +7,7 @@ import org.thframework.model.UserInfo;
  */
 public interface UserInfoService {
 
-    UserInfo findByUsername(UserInfo userInfo);
+    UserInfo findByUsername(String username);
+
+    void save(UserInfo userInfo);
 }

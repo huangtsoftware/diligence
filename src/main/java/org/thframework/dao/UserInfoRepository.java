@@ -12,5 +12,5 @@ import org.thframework.model.UserInfo;
 public interface UserInfoRepository extends PagingAndSortingRepository<UserInfo, Long>, JpaSpecificationExecutor<UserInfo> {
 
 
-    UserInfo findByUsername(UserInfo userInfo);
+    UserInfo findByUsername(String username);
 }

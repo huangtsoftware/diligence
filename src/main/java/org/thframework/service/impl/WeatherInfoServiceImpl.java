@@ -25,9 +25,8 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
     @Override
     public WeatherInfoData getWeatherInfoData(String city) {
         SystemConfig systemConfig = systemConfigService.findByKey(CommonConstant.weather_info_url);
-//        String url = "https://free-api.heweather.com/v5/weather?key=5d276a85cdc04c2bbf63e05e2a0dd7c3&city=" + city;
-        String url = systemConfig.getValue() + city;
-        JSON.toJSONString(null);
+        String url = "https://free-api.heweather.com/v5/weather?key=5d276a85cdc04c2bbf63e05e2a0dd7c3&city=" + city;
+//        String url = systemConfig.getValue() + city;
         String result = restTemplate.getForObject(url, String.class);
         WeatherInfoData weatherInfoData = JSON.parseObject(result, WeatherInfoData.class);
         return weatherInfoData;
