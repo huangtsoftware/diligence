@@ -5,6 +5,8 @@ package org.thframework.constant;
  */
 public class CommonConstant {
 
+    public static String weather_info_url = "weather_info_url";
 
+    public static String city_info_url = "city_info_url";
 
 }

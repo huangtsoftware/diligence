@@ -35,18 +35,19 @@
         </init-param>
     </filter>
 
+    <!-- classpath:spring-redis.xml, classpath:spring-mongodb.xml -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:spring-hibernate.xml
             classpath:spring-task.xml
+            classpath:spring-shiro.xml
         </param-value>
     </context-param>
      <!--监听servletContext，启动contextConfigLocation中的spring配置信息 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
     <!-- 防止spring内存溢出监听器 -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
@@ -75,7 +76,7 @@
 
     <servlet>
         <description>spring mvc servlet</description>
-        <servlet-name>rest</servlet-name>
+        <servlet-name>springMvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -86,7 +87,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>rest</servlet-name>
+        <servlet-name>springMvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -121,6 +122,20 @@
     </filter>
     <filter-mapping>
         <filter-name>druidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- 配置session超时时间，单位分钟 -->

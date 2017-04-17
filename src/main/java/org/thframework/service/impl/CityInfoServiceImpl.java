@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.thframework.constant.CommonConstant;
 import org.thframework.dao.CityInfoRepository;
 import org.thframework.model.CityInfo;
 import org.thframework.model.SystemConfig;
@@ -41,10 +42,10 @@ public class CityInfoServiceImpl implements CityInfoService {
 
     @Override
     public List<CityInfo> updateCityInfos() {
-//        SystemConfig config = systemConfigService.findByKey("city_info_json");
-//        String result = restTemplate.getForObject(config.getValue(), String.class);
-        String url = "https://cdn.heweather.com/china-city-list.json";
-        String result = restTemplate.getForObject(url, String.class);
+        SystemConfig config = systemConfigService.findByKey(CommonConstant.city_info_url);
+        String result = restTemplate.getForObject(config.getValue(), String.class);
+//        String url = "https://cdn.heweather.com/china-city-list.json";
+//        String result = restTemplate.getForObject(url, String.class);
         List<CityInfo> cityInfoList = JSON.parseArray(result, CityInfo.class);
         cityInfoList.forEach(city -> {
             CityInfo cityInfo = findByCode(city.getCode());
