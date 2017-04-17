@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32}:%L - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_LOG" class="ch.qos.logback.core.FileAppender">
+        <File>/logs/tomcat/log.log</File>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32}:%L - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache" level="INFO" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.hibernate" level="info"/>
+    <logger name="org.hibernate.SQL" level="debug"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="trace"/>
+    <root level="INFO">
+        <appender-ref ref="FILE_LOG"/>
+        <appender-ref ref="Console"/>
+    </root>
+</configuration>

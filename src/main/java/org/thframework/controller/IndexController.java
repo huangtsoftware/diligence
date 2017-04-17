@@ -30,6 +30,7 @@ public class IndexController {
 
     @RequestMapping("/home")
     public String index() {
+        LOGGER.info("现在计入home,{}", "你好");
         System.out.println("home......");
         return "home";
     }
