@@ -28,7 +28,6 @@ public class ServiceTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void updateCityInfos() {
         cityInfoService.updateCityInfos();
     }

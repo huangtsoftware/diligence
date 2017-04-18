@@ -4,14 +4,11 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.thframework.constant.CommonConstant;
 import org.thframework.dao.CityInfoRepository;
 import org.thframework.model.CityInfo;
-import org.thframework.model.SystemConfig;
 import org.thframework.service.CityInfoService;
 import org.thframework.service.SystemConfigService;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,14 +44,12 @@ public class CityInfoServiceImpl implements CityInfoService {
         String result = restTemplate.getForObject(url, String.class);
         List<CityInfo> cityInfoList = JSON.parseArray(result, CityInfo.class);
         cityInfoList.forEach(city -> {
-            if (city.getCityzh().equals("北京")) {
-                CityInfo cityInfo = findByCode(city.getCode());
-                if (null == cityInfo) {
-                    save(city);
-                } else {
-                    city.setId(cityInfo.getId());
-                    save(city);
-                }
+            CityInfo cityInfo = findByCode(city.getCode());
+            if (null == cityInfo) {
+                save(city);
+            } else {
+                city.setId(cityInfo.getId());
+                save(city);
             }
         });
         return cityInfoList;
