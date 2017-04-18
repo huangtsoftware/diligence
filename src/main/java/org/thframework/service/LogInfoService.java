@@ -1,5 +1,7 @@
 package org.thframework.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.thframework.model.LogInfo;
 
 /**
@@ -7,6 +9,8 @@ import org.thframework.model.LogInfo;
  */
 public interface LogInfoService {
 
-    public void save(LogInfo logInfo);
+    void save(LogInfo logInfo);
+
+    Page<LogInfo> findAll(Pageable pageable);
 
 }

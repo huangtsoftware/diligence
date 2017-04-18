@@ -11,11 +11,26 @@
         </encoder>
     </appender>
 
-    <appender name="FILE_LOG" class="ch.qos.logback.core.FileAppender">
-        <File>/logs/tomcat/log.log</File>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+    <!--<appender name="FILE_LOG" class="ch.qos.logback.core.FileAppender">-->
+        <!--<File>/logs/tomcat/log.log</File>-->
+        <!--<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+            <!--<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32}:%L - %msg%n</Pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <!-- 按照天分割日志文件 -->
+    <appender name="FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/logs/diligence.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/logs/diligence-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 最大30天的日志 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder><!-- 必须指定，否则不会往文件输出内容 -->
             <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32}:%L - %msg%n</Pattern>
         </encoder>
+        <append>false</append>
+        <prudent>false</prudent>
     </appender>
 
     <logger name="org.apache" level="DEBUG" additivity="false">
@@ -25,7 +40,7 @@
     <logger name="org.hibernate" level="info"/>
     <logger name="org.hibernate.SQL" level="debug"/>
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace"/>
-    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="trace"/>
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="trace"/>-->
 
     <root level="DEBUG">
         <appender-ref ref="Console"/>
