@@ -6,9 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * 辅助访问Spring
- * @author wangbing
- * @since 2016-03-05
+ *
  */
 @Component
 public class BeanContext implements ApplicationContextAware {

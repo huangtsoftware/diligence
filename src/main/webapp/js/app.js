@@ -1,5 +1,5 @@
 /**
- * Created by huangteng on 2017/4/17.
+ * Created on 2017/4/17.
  *
  */
 requirejs.config({

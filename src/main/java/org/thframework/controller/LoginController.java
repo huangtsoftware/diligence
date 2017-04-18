@@ -19,13 +19,18 @@ import org.thframework.service.UserInfoService;
  * Created on 2017/4/17.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/admin")
 public class LoginController {
 
     Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserInfoService userInfoService;
+
+    @RequestMapping("/")
+    public String toLogin() {
+        return "login";
+    }
 
     @RequestMapping("login")
     @ResponseBody

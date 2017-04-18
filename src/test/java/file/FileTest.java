@@ -15,7 +15,7 @@ public class FileTest {
 
     @Test
     public void test() throws IOException {
-        FileInputStream in = new FileInputStream(new File("D:\\opt\\tuniu\\logs\\tomcat\\app\\tomcat_ats_acs\\acs.log"));
+        FileInputStream in = new FileInputStream(new File("D:\\opt\\logs\\tomcat\\log.log"));
         Scanner scanner = new Scanner(in);
         while (scanner.hasNextLine()) {
             System.out.println(scanner.nextLine());

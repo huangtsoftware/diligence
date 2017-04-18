@@ -1,6 +1,7 @@
 package org.thframework.controller;
 
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class IndexController {
     @Autowired
     private WeatherInfoService weatherInfoService;
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String index() {
-        System.out.println("home......");
+
         return "home";
     }
 
@@ -40,6 +41,7 @@ public class IndexController {
         cityInfoService.updateCityInfos();
         return "sucess..";
     }
+
 
     @RequestMapping("/weather")
     @ResponseBody
