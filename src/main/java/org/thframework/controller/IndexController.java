@@ -1,15 +1,11 @@
 package org.thframework.controller;
 
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.thframework.domain.weather.WeatherInfoData;
-import org.thframework.model.SystemConfig;
 import org.thframework.service.CityInfoService;
 import org.thframework.service.WeatherInfoService;
 
@@ -33,21 +29,6 @@ public class IndexController {
     public String index() {
 
         return "home";
-    }
-
-    @RequestMapping("/save")
-    @ResponseBody
-    public String save() {
-        cityInfoService.updateCityInfos();
-        return "sucess..";
-    }
-
-
-    @RequestMapping("/weather")
-    @ResponseBody
-    public WeatherInfoData weather(SystemConfig config) {
-        String city = config.getValue();
-        return weatherInfoService.getWeatherInfoData(city);
     }
 
 }
