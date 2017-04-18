@@ -1,5 +1,6 @@
 package base;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -16,4 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class BaseTest {
 
 
+    @Test
+    public void testBaseTest() {
+        System.out.println("测试");
+    }
 }

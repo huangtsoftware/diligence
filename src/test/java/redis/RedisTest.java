@@ -13,14 +13,14 @@ import javax.annotation.Resource;
  */
 public class RedisTest extends BaseTest {
 
-    @Resource
-    private RedisTemplate redisTemplate;
-
-    @Resource
-    private RestTemplate restTemplate;
-
-    @Resource
-    private MongoTemplate mongoTemplate;
+//    @Resource
+//    private RedisTemplate redisTemplate;
+//
+//    @Resource
+//    private RestTemplate restTemplate;
+//
+//    @Resource
+//    private MongoTemplate mongoTemplate;
 
 
     @Test

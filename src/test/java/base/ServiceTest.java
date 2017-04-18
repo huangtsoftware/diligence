@@ -16,15 +16,6 @@ import org.thframework.service.LogInfoService;
  */
 public class ServiceTest extends BaseTest {
 
-//    @Resource
-//    private RedisTemplate redisTemplate;
-//
-//    @Resource
-//    private RestTemplate restTemplate;
-//
-//    @Resource
-//    private MongoTemplate mongoTemplate;
-
     @Autowired
     private CityInfoService cityInfoService;
 
