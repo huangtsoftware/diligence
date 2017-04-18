@@ -26,8 +26,7 @@ public class LogInfo implements Serializable {
     @Column(name = "remote_ip")
     private String remoteIP;
 
-    @Column(name = "add_time")
-    @CreatedDate
+    @Column(name = "add_time", columnDefinition = "TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date addTime;
 

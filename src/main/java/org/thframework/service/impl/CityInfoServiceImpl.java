@@ -31,7 +31,6 @@ public class CityInfoServiceImpl implements CityInfoService {
 
     @Override
     public void save(CityInfo cityInfo) {
-        cityInfo.setUpdateTime(new Date());
         cityInfoRepository.save(cityInfo);
     }
 
@@ -42,20 +41,20 @@ public class CityInfoServiceImpl implements CityInfoService {
 
     @Override
     public List<CityInfo> updateCityInfos() {
-        SystemConfig config = systemConfigService.findByKey(CommonConstant.city_info_url);
-        String result = restTemplate.getForObject(config.getValue(), String.class);
-//        String url = "https://cdn.heweather.com/china-city-list.json";
-//        String result = restTemplate.getForObject(url, String.class);
+//        SystemConfig config = systemConfigService.findByKey(CommonConstant.city_info_url);
+//        String result = restTemplate.getForObject(config.getValue(), String.class);
+        String url = "https://cdn.heweather.com/china-city-list.json";
+        String result = restTemplate.getForObject(url, String.class);
         List<CityInfo> cityInfoList = JSON.parseArray(result, CityInfo.class);
         cityInfoList.forEach(city -> {
-            CityInfo cityInfo = findByCode(city.getCode());
-            if (null == cityInfo) {
-                city.setAddTime(new Date());
-                save(city);
-            } else {
-                city.setId(cityInfo.getId());
-                city.setAddTime(cityInfo.getAddTime());
-                save(city);
+            if (city.getCityzh().equals("北京")) {
+                CityInfo cityInfo = findByCode(city.getCode());
+                if (null == cityInfo) {
+                    save(city);
+                } else {
+                    city.setId(cityInfo.getId());
+                    save(city);
+                }
             }
         });
         return cityInfoList;

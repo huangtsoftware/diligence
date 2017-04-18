@@ -61,13 +61,13 @@ public class CityInfo implements Serializable {
     private String leaderzh;
 
     @Column(name = "lat")
-    private String lat;
+    private Double lat;
 
     @Column(name = "lon")
-    private String lon;
+    private Double lon;
 
+    @Column(name = "add_time", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "add_time")
     @CreatedDate
     private Date addTime;
 
@@ -76,6 +76,15 @@ public class CityInfo implements Serializable {
     @LastModifiedDate
     private Date updateTime;
 
+    @PrePersist
+    public void onCreate() {
+        updateTime = addTime = new Date();
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
     public Integer getId() {
         return id;
     }
@@ -164,28 +173,21 @@ public class CityInfo implements Serializable {
         this.leaderzh = leaderzh;
     }
 
-    public String getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public String getLon() {
+    public Double getLon() {
         return lon;
     }
 
-    public void setLon(String lon) {
+
+    public void setLon(Double lon) {
         this.lon = lon;
-    }
-
-    public Date getAddTime() {
-        return addTime;
-    }
-
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
     }
 
     public Date getUpdateTime() {
@@ -194,5 +196,13 @@ public class CityInfo implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
     }
 }

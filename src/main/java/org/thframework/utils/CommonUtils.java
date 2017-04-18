@@ -1,6 +1,7 @@
 package org.thframework.utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 
 /**
  * Created on 2016/11/19.
@@ -26,8 +27,19 @@ public class CommonUtils {
         return ip;
     }
 
-
-
+    public static void replaceNull(Object data, Class<?> clazz) throws IllegalAccessException {
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            if (field.get(data) == null) {
+                if (field.getType() == String.class) {
+                    field.set(data, "");
+                } else if (field.getType() == Integer.class) {
+                    field.set(data, 0);
+                }
+            }
+        }
+    }
 
 
 }

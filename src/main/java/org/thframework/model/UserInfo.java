@@ -10,7 +10,7 @@ import java.util.Date;
  * Created on 2017/4/17.
  */
 @Entity
-@Table(name = "user_info")
+@Table(name = "t_userinfo")
 public class UserInfo {
 
     @Id
@@ -29,8 +29,8 @@ public class UserInfo {
     @Column(name = "remark")
     private String remark;
 
+    @Column(name = "add_time", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "add_time")
     @CreatedDate
     private Date addTime;
 
@@ -38,6 +38,16 @@ public class UserInfo {
     @Column(name = "update_time")
     @LastModifiedDate
     private Date updateTime;
+
+    @PrePersist
+    public void onCreate() {
+        updateTime = addTime = new Date();
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
 
     public UserInfo() {}
 

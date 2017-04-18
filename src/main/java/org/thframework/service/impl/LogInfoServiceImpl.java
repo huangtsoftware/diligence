@@ -18,7 +18,6 @@ public class LogInfoServiceImpl implements LogInfoService {
     private LogInfoRepository logInfoRepository;
 
     public void save(LogInfo logInfo) {
-        logInfo.setAddTime(new Date());
         logInfoRepository.save(logInfo);
     }
 }
