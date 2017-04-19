@@ -1,5 +1,6 @@
 package base;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class ServiceTest extends BaseTest {
     private LogInfoService logInfoService;
 
     @Test
-    @Ignore
     public void findByCode() {
-        cityInfoService.findByCode("");
+        CityInfo cityInfo = cityInfoService.findByCode("CN101010100");
+        Assert.assertNotNull(cityInfo);
     }
 
     @Test
@@ -39,17 +40,18 @@ public class ServiceTest extends BaseTest {
     @Test
     @Ignore
     public void loginfoList() {
-        Pageable pageable = new PageRequest(1, 5);
+        Pageable pageable = new PageRequest(0, 10);
         Page<LogInfo> page = logInfoService.findAll(pageable);
         page.getContent().forEach(log -> System.out.println(JsonUtils.toString(log)));
     }
 
     @Test
+    @Ignore
     public void cityInfoList() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
-        Pageable pageable = new PageRequest(0, 100, sort);
+        Pageable pageable = new PageRequest(0, 10, sort);
         CityInfo cityInfo = new CityInfo();
-//        cityInfo.setCode("CN101010100");
+        cityInfo.setCode("CN101010100");
         Page<CityInfo> page = cityInfoService.queryByCondition(cityInfo, pageable);
         page.getContent().forEach(city -> System.out.println(JsonUtils.toString(city)));
     }

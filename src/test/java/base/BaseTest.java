@@ -19,6 +19,6 @@ public class BaseTest {
 
     @Test
     public void testBaseTest() {
-        System.out.println("测试");
+        System.out.println("******执行测试方法******");
     }
 }
