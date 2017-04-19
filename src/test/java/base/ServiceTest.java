@@ -26,6 +26,7 @@ public class ServiceTest extends BaseTest {
     private LogInfoService logInfoService;
 
     @Test
+    @Ignore
     public void findByCode() {
         CityInfo cityInfo = cityInfoService.findByCode("CN101010100");
         Assert.assertNotNull(cityInfo);
