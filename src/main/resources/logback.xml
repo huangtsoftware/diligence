@@ -36,11 +36,11 @@
     <logger name="org.apache" level="DEBUG" additivity="false">
         <appender-ref ref="Console"/>
     </logger>
-    <logger name="org.springframework" level="info"/>
-    <logger name="org.hibernate" level="info"/>
-    <logger name="org.hibernate.SQL" level="debug"/>
-    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace"/>
-    <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="trace"/>-->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="TRACE"/>-->
 
     <root level="DEBUG">
         <appender-ref ref="Console"/>

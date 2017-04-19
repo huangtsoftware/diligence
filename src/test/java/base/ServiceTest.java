@@ -1,15 +1,17 @@
 package base;
 
-import com.alibaba.fastjson.JSON;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.thframework.model.CityInfo;
 import org.thframework.model.LogInfo;
 import org.thframework.service.CityInfoService;
 import org.thframework.service.LogInfoService;
+import org.thframework.utils.JsonUtils;
 
 /**
  * Created on 2017/1/13.
@@ -23,21 +25,33 @@ public class ServiceTest extends BaseTest {
     private LogInfoService logInfoService;
 
     @Test
+    @Ignore
     public void findByCode() {
         cityInfoService.findByCode("");
     }
 
     @Test
+    @Ignore
     public void updateCityInfos() {
         cityInfoService.updateCityInfos();
     }
 
     @Test
-    public void list() {
+    @Ignore
+    public void loginfoList() {
         Pageable pageable = new PageRequest(1, 5);
         Page<LogInfo> page = logInfoService.findAll(pageable);
-        page.getContent().forEach(log -> System.out.println(JSON.toJSONString(log)));
+        page.getContent().forEach(log -> System.out.println(JsonUtils.toString(log)));
     }
 
+    @Test
+    public void cityInfoList() {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(0, 100, sort);
+        CityInfo cityInfo = new CityInfo();
+//        cityInfo.setCode("CN101010100");
+        Page<CityInfo> page = cityInfoService.queryByCondition(cityInfo, pageable);
+        page.getContent().forEach(city -> System.out.println(JsonUtils.toString(city)));
+    }
 
 }
