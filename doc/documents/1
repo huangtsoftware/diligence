@@ -2,10 +2,8 @@ git设置忽略文件：
 git rm --cached java/.idea/workspace.xml
 
 
-redis下载地址：
 
 
-redis desktop manageer 下载地址：
 
 查询天气信息的接口
 https://free-api.heweather.com/v5/weather?key=5d276a85cdc04c2bbf63e05e2a0dd7c3&city=
